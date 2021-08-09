@@ -1,0 +1,25 @@
+{
+  "name": "festivalmusica_inicio",
+  "version": "1.0.0",
+  "description": "Aprendiendo GULP y SASS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SASS",
+    "gulp",
+    "diseño",
+    "web"
+  ],
+  "author": "David Madrid Nápoles",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.0.0",
+    "node-sass": "^6.0.1"
+  }
+}

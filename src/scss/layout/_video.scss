@@ -46,12 +46,22 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        font-size: 7rem;
+        
+        @include tablet {
+          font-size: 5rem;
+        }
+        @include desktop{
+          font-size: 7rem;
+        }
 
         span {
             background-color: $rosa;
-            font-size: 2rem;
+            font-size: 1.6rem;
             padding: 1rem 2rem;
+
+            @include tablet {
+              font-size: 2rem;
+            }
         }
     }
 }

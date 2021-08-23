@@ -1,0 +1,24 @@
+h3 { 
+    text-align: center;
+}
+
+.galeria {
+    padding: $separacion 0;
+}
+
+.galeria-imagenes {
+    padding: 0;
+    list-style: none;
+    margin-top: $separacion;
+
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include tablet {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @include desktop {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}

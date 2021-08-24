@@ -4,6 +4,15 @@ const imagemin = require("gulp-imagemin");
 const webp = require("gulp-webp");
 const concat = require('gulp-concat');
 
+//utilidades CSS
+const autoprefixer = require('autoprefixer');
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
+const sourcemaps = require('gulp-sourcemaps');
+
+//Utilidades JS
+const terser = require('gulp-terser-js');
+
 const paths = {
     imagenes : 'src/img/**/*',
     scss : 'src/scss/**/*',
@@ -12,25 +21,20 @@ const paths = {
 
 function css(done) {
     return src('src/scss/app.scss')
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }))
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(postcss([autoprefixer(), cssnano()]))
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('./css'))
     done();
 };
 
-function mcss(done) {
-    return src('src/scss/app.scss')
-        .pipe(sass({
-            outputStyle: 'compressed'
-        }))
-        .pipe(dest('./css'))
-    done();
-}
-
 function javascript(done) {
     return src(paths.js)
+        .pipe(sourcemaps.init())
         .pipe(concat('bundle.js'))
+        .pipe(terser())
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('./js'))
     done();
 }
@@ -52,12 +56,11 @@ function versionWebp (done) {
 }
 
 function watchFiles() {
-    watch('src/scss/**/*.scss', mcss) //* busaca dentro de la carpeta actual. **/* ya busca todos los archivos de todas las carpetas hijos
+    watch('src/scss/**/*.scss', css) //* busaca dentro de la carpeta actual. **/* ya busca todos los archivos de todas las carpetas hijos
     watch(paths.js, javascript)
 }
 
 exports.css = css;
-exports.mcss = mcss;
 exports.watchFiles = watchFiles;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;

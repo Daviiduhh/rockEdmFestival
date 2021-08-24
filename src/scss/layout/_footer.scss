@@ -1,0 +1,15 @@
+footer {
+    margin-top: 5rem;
+    background-color: $morado;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    p {
+        color: $blanco;
+    }
+    a {
+        color: $blanco;
+        font-weight: $bold;
+    }
+}

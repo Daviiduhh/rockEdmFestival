@@ -1,0 +1,58 @@
+.boletos {
+    background-color: $verde;
+
+    .container {
+        padding: 2rem 0;
+    }
+
+    h3 {
+        color: $blanco;
+    }
+    .pase {
+        font-weight: $delgada;
+        font-size: 2rem;
+        margin: 2rem 0;
+    }
+
+}
+
+.boletos-grid {
+    display: grid;
+
+    @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+
+        .dia1 {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+        .dia2 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+    }
+}
+
+.caracteristicas {
+    display: grid;
+    justify-content: center;
+    align-content: flex-start;
+
+    p {
+        background-color: $blanco;
+        padding: 1rem 2rem;
+        margin: 0;
+    }
+    .incluye,
+    .precio {
+        text-align: center;
+        color: $blanco;
+    }
+    .incluye {
+        font-weight: $delgada;
+        background-color: $rosa;
+    }
+    .precio{
+        background-color: $morado;
+    }
+}

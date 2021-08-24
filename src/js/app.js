@@ -1,17 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    crearGaleria();
+document.addEventListener("DOMContentLoaded", () => {
+  scrollNav();
+
+  navegacionFija();
 });
 
-function crearGaleria() {
-    const galeria = document.querySelector('.galeria-imagenes');
+function scrollNav() {
+  const enlaces = document.querySelectorAll(".navegacion-principal a");
 
-    for(let i = 1; i <= 12; i++) {
-        const imagen = document.createElement('img');
-        imagen.src = `img/thumb/${i}.webp`
+  enlaces.forEach((enlace) => {
+    enlace.addEventListener("click", (evento) => {
+      evento.preventDefault();
+      const seccion = document.querySelector(
+        evento.target.attributes.href.value
+      );
 
-        const lista = document.createElement('li');
-        lista.appendChild(imagen);
+      seccion.scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+}
 
-        galeria.appendChild(lista);
+function navegacionFija() {
+  const barra = document.querySelector('.header');
+
+  //Observador
+  const observer = new IntersectionObserver( (entries) => {
+    if (entries[0].isIntersecting) {
+        barra.classList.remove('fijo');
+    }else {
+        barra.classList.add('fijo');
     }
+  });
+
+  //Elemento a observar
+  observer.observe(document.querySelector(".informacion"));
 }

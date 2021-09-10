@@ -32,13 +32,13 @@
 }
 
 .navegacion-principal {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
 
   a {
     color: $blanco;
+    font-weight: $bold;
+    padding: 0 1rem;
     font-size: 1.6rem;
     &:hover {
       color: $negro;
